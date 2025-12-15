@@ -1,6 +1,3 @@
-from fileinput import close
-
-
 def garden_operations(*, error_name: str) -> None:
     """
     Function to execute operations on garden's states
@@ -21,7 +18,6 @@ def garden_operations(*, error_name: str) -> None:
     if error_name == "FileNotFoundError":
         try:
             open("missing.txt")
-            close()
             print("Garden info was reviewed!\n")
         except FileNotFoundError:
             print("Caught FileNotFoundError: No such file 'missing.txt'\n")
@@ -30,18 +26,16 @@ def garden_operations(*, error_name: str) -> None:
             plant_to_sell = plant_inventory[1]
             print(f"{plant_to_sell} is ready to be sold\n")
         except KeyError:
-            print(f"Caught KeyError: 'missing\\_plant'\n")
+            print("Caught KeyError: 'missing\\_plant'\n")
 
     if error_name == "all":
         try:
             garden_name = int("Sunshine")
+            print(f"Welcome in {garden_name}")
             water_per_plant = 100 / 0
             open("missing.txt")
-            close()
         except (ValueError, ZeroDivisionError, KeyError, FileNotFoundError):
             print("Caught an error, but program continues!\n")
-
-
 
 
 def test_dynamic_inputs():
@@ -66,6 +60,7 @@ def test_dynamic_inputs():
     garden_operations(error_name="all")
 
     print("All error types tested successfully!")
+
 
 if __name__ == "__main__":
     test_dynamic_inputs()

@@ -1,4 +1,4 @@
-def check_temperature(temp_str):
+def check_temperature(temp_str: str):
     """
     Converts input to int, validates range (0-40), and handles errors.
     Returns the integer if valid, otherwise returns None.
@@ -14,7 +14,7 @@ def check_temperature(temp_str):
             return None
         return temp_int
 
-    except:
+    except Exception:
         print(f"Error: '{temp_str}' is not a valid number")
         return None
 
@@ -32,10 +32,11 @@ def test_temperature_input():
         print()
         print(f"Testing temperature: {temp_input}")
         result = check_temperature(temp_input)
-        if result:
+        if result is not None:
             print(f"Temperature {result}°C is perfect for plants!")
     print()
     print("All tests completed - program didn't crash!")
+
 
 if __name__ == "__main__":
     test_temperature_input()
