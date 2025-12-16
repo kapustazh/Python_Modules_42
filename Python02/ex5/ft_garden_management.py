@@ -33,6 +33,7 @@ class Plant():
 
 
 class GardenManager():
+    """Class to manage garden operations."""
     def __init__(self) -> None:
         self.plant_list = []
         self.water_in_tank = 5
