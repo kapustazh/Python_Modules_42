@@ -1,4 +1,5 @@
 def water_plants(*, plant_list: list) -> None:
+    """Function to water plants"""
     try:
         print("Opening watering system")
         for plant in plant_list:
@@ -13,6 +14,7 @@ def water_plants(*, plant_list: list) -> None:
 
 
 def test_watering_system() -> None:
+    """Function to test watering system"""
     plants = ["Tomato", "Cucumber", "Cabbage"]
     plants_with_error = ["Tomato", None, "Cabbage"]
 

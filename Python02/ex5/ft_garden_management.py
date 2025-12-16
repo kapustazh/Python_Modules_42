@@ -34,6 +34,7 @@ class Plant():
 
 class GardenManager():
     """Class to manage garden operations."""
+
     def __init__(self) -> None:
         self.plant_list = []
         self.water_in_tank = 5
@@ -100,6 +101,7 @@ class GardenManager():
 
 
 def ft_garden_management():
+    """Function to test garden management system"""
     print("=== Garden Management System ===\n")
 
     tomato = Plant("tomato", 9, 3)

@@ -20,6 +20,7 @@ class WaterError(GardenError):
 
 
 def ft_custom_errors():
+    """Function to demonstrate custom garden errors"""
     print("=== Custom Garden Errors Demo ===\n")
     print("Testing PlantError...")
     try:
