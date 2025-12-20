@@ -1,7 +1,7 @@
 def ft_achievement_tracker() -> None:
-    """Achevement tracker mannager, provides
+    """Achievement tracker manager that provides
         brief statistics of each player's
-        achievments
+        achievements
     """
     alice = {'first_kill', 'level_10', 'treasure_hunter', 'speed_demon'}
     bob = {'first_kill', 'level_10', 'boss_slayer', 'collector'}
@@ -9,18 +9,18 @@ def ft_achievement_tracker() -> None:
                'boss_slayer', 'speed_demon', 'perfectionist'}
     print("=== Achievement Tracker System ===")
     print()
-    print(f"Player alice achievments: {alice}")
-    print(f"Player bob achievments: {bob}")
-    print(f"Player charlie achievments: {charlie}")
+    print(f"Player alice achievements: {alice}")
+    print(f"Player bob achievements: {bob}")
+    print(f"Player charlie achievements: {charlie}")
     print()
     print("=== Achievement Analytics ===")
     players = [bob, charlie, alice]
-    unique_achievments = set.union(*players)
-    print(f"All unique achievements:{unique_achievments}")
-    print(f"Total unique achievements: {len(unique_achievments)}")
+    unique_achievements = set.union(*players)
+    print(f"All unique achievements: {unique_achievements}")
+    print(f"Total unique achievements: {len(unique_achievements)}")
     print()
-    common_achievments = set.intersection(*players)
-    print(f"Common to all players: {common_achievments}")
+    common_achievements = set.intersection(*players)
+    print(f"Common to all players: {common_achievements}")
     rare_achievements = (
         (bob - (charlie | alice)) |
         (charlie - (bob | alice)) |
@@ -28,7 +28,7 @@ def ft_achievement_tracker() -> None:
     )
     print("Rare achievements (1 player): ", rare_achievements)
     print()
-    alice_vs_bob = alice.intersection(alice)
+    alice_vs_bob = alice.intersection(bob)
     print("Alice vs Bob common:", alice_vs_bob)
     alice_unique = alice.difference(bob)
     print("Alice unique:", alice_unique)
