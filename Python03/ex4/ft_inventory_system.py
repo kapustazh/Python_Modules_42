@@ -41,13 +41,72 @@ def ft_inventory_system():
         if stats["type"] == "weapon":
             weapons += 1
         elif stats["type"] == "armor":
-            armor += 1
-        else:
-            consumable += 1
-    print(
-        f"Categories: \"weapon\"({weapons})"
-        ",\"consumable\"({consumable}) \"armor\"({armor})"
-    )
+            armor += stats.get("quantity")
+        elif stats["type"] == "consumable":
+            consumable += stats.get("quantity")
+
+    print(f"Categories: weapon({weapons})" f",consumable({consumable}) armor({armor})")
+    print("=== Transaction: Alice gives Bob 2 potions ===")
+    alice_inventory["potion"]["quantity"] -= 2
+    if "potion" in bob_inventory:
+        bob_inventory["potion"]["quantity"] += 2
+    else:
+        bob_inventory["potion"] = {
+            "type": "consumable",
+            "rarity": "common",
+            "price": 50,
+            "quantity": 2,
+        }
+    print("Transaction successful!")
+    print()
+    print("=== Updated Inventories ===")
+    print(f"Alice potions: {alice_inventory["potion"].get("quantity")}")
+    print(f"Bob potions: {bob_inventory["potion"].get("quantity")}")
+    print()
+
+    alice_price = 0
+    alice_count = 0
+    for item_name, stats in alice_inventory.items():
+        alice_price += stats["quantity"] * stats["price"]
+        alice_count += stats["quantity"]  # Summing for total items (7), not max stack
+
+    bob_price = 0
+    bob_count = 0
+    for item_name, stats in bob_inventory.items():
+        bob_price += stats["quantity"] * stats["price"]
+        bob_count += stats["quantity"]
+
+    if alice_price > bob_price:
+        name = "Alice"
+        mvp_gold = alice_price
+        most_items = alice_count
+
+        rarest_items = [
+            item_name
+            for item_name, stats in alice_inventory.items()
+            if stats["rarity"] == "rare"
+        ]
+    else:
+        name = "Bob"
+        mvp_gold = bob_price
+        most_items = bob_count
+
+        rarest_items = [
+            item_name
+            for item_name, stats in bob_inventory.items()
+            if stats["rarity"] == "rare"
+        ]
+
+    rarest_items = []
+    for item_name, stats in alice_inventory.items():
+        if stats["rarity"] == "rare":
+            rarest_items.append(item_name)
+    for item_name, stats in bob_inventory.items():
+        if stats["rarity"] == "rare":
+            rarest_items.append(item_name)
+
+    print("Rarest items:", end=" ")
+    print(*rarest_items, sep=", ")
 
 
 if __name__ == "__main__":
