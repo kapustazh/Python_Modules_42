@@ -9,7 +9,7 @@ def ft_inventory_system():
             "price": 500
         },
         "potion": {
-            "type": 'consumable',
+            "type": "consumable",
             "rarity": "common",
             "quantity": 5,
             "price": 50
