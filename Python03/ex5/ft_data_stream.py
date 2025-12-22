@@ -8,7 +8,7 @@ def ft_data_stream() -> None:
     """
     print("=== Game Data Stream Processor ===")
     events_count = 100
-    names = ["Arestovich", "Lenin", "Stalin", "Austrian painter"]
+    names = ["arestovich", "lenin", "stalin", "austrian painter"]
     levels = [6, 7, 322, 228]
     events = ["sleeps - zZzZzZzZz...", "found treasure", "leveled up"]
     print()
@@ -55,7 +55,9 @@ def ft_data_stream() -> None:
         b = 1
         for _ in range(n):
             yield a
-            a, b = b, a + b
+            temp = a
+            a = b
+            b = temp + b
 
     def is_prime(number):
         if number > 1:

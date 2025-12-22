@@ -47,7 +47,8 @@ def ft_coordinate_system() -> None:
                 f" invalid literal for int() with base 10:"
                 f" '{arg}'")
             print(
-                f"Error details - Type: {type(e).__name__}, {e}"
+                f"Error details - Type: "
+                f"{type(e).__name__}, Args: (\"{e}\" )"
             )
 
     if pos_of_players:

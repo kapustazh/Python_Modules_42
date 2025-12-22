@@ -78,8 +78,8 @@ def ft_inventory_system():
     print("Transaction successful!")
     print()
     print("=== Updated Inventories ===")
-    print(f"Alice potions: {alice_inventory["potion"].get("quantity")}")
-    print(f"Bob potions: {bob_inventory["potion"].get("quantity")}")
+    print(f"Alice potions: {alice_inventory['potion'].get('quantity')}")
+    print(f"Bob potions: {bob_inventory['potion'].get('quantity')}")
     print()
 
     alice_price = 0

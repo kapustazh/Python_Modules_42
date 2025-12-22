@@ -2,6 +2,9 @@ import sys
 
 
 def ft_command_quest() -> None:
+    """Provides short statistics about all arguments
+    provided
+    """
     print("=== Command Quest ===")
     if len(sys.argv) < 2:
         print("No arguments provided!")
