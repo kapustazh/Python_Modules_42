@@ -1,19 +1,36 @@
 def ft_inventory_system():
+    """Inventory simulator"""
     print("=== Player Inventory System ===")
     print()
     alice_inventory = {
-        "sword": {"type": "weapon", "rarity": "rare", "quantity": 1, "price": 500},
+        "sword": {
+            "type": "weapon",
+            "rarity": "rare",
+            "quantity": 1, "price": 500
+        },
         "potion": {
             "type": "consumable",
             "rarity": "common",
             "quantity": 5,
             "price": 50,
         },
-        "shield": {"type": "armor", "rarity": "uncommon", "quantity": 1, "price": 200},
+        "shield": {
+            "type": "armor",
+            "rarity": "uncommon",
+            "quantity": 1, "price": 200
+        },
     }
     bob_inventory = {
-        "sword": {"type": "weapon", "rarity": "common", "quantity": 1, "price": 50},
-        "shield": {"type": "armor", "rarity": "rare", "quantity": 10, "price": 50},
+        "sword": {
+            "type": "weapon",
+            "rarity": "common",
+            "quantity": 1, "price": 50
+        },
+        "shield": {
+            "type": "armor",
+            "rarity": "rare",
+            "quantity": 10, "price": 50
+        },
     }
     alice_inventory_price = 0
     alice_counter_of_items = 0
@@ -30,6 +47,7 @@ def ft_inventory_system():
             f"{item_name} ({item_type}, {rarity}): {quantity}x @ {price}"
             f" gold each = {total_value} gold"
         )
+    print()
     print(f"Inventory value: {alice_inventory_price} gold")
     print(f"Item count: {alice_counter_of_items}")
     weapons = 0
@@ -43,7 +61,9 @@ def ft_inventory_system():
         elif stats["type"] == "consumable":
             consumable += stats.get("quantity")
 
-    print(f"Categories: weapon({weapons})" f",consumable({consumable}) armor({armor})")
+    print(f"Categories: weapon({weapons}),"
+          f" consumable({consumable}), armor({armor})")
+    print()
     print("=== Transaction: Alice gives Bob 2 potions ===")
     alice_inventory["potion"]["quantity"] -= 2
     if "potion" in bob_inventory:
@@ -77,7 +97,7 @@ def ft_inventory_system():
     print("=== Inventory Analytics ===")
 
     if alice_price > bob_price:
-        print(f"Most valuable player: Alice ({alice_price} gold)")
+        print(f"Most valuable player: Alice ({alice_price} gold )")
     else:
         print(f"Most valuable player: Bob ({bob_price} gold)")
 
