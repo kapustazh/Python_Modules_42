@@ -1,0 +1,6 @@
+*.txt
+sample_data.json
+*.tar
+data_generator.py
+data-generator-tools.tar.gz
+.gitignore
