@@ -68,10 +68,6 @@ class NumericProcessor(DataProcessor):
         except Exception:
             print("Validation failed: Not numeric data!")
 
-    def format_output(self, result: str) -> str:
-        """Returns standard output format for numbers."""
-        return f"Output: {result}"
-
 
 class TextProcessor(DataProcessor):
     """Concrete class for handling string text."""
@@ -117,10 +113,6 @@ class LogProcessor(DataProcessor):
         except Exception:
             print("Validation failed: Not log data!")
             return False
-
-    def format_output(self, result: str) -> str:
-        """Returns standard output format for logs."""
-        return f"Output: {result}"
 
 
 def stream_processor() -> None:
