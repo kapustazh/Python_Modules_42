@@ -101,6 +101,8 @@ class LogProcessor(DataProcessor):
             return f"[INFO] INFO level detected: {data[6::]}"
         elif "STATUS:" in data:
             return f"[STATUS]: {data[8::]}"
+        else:
+            return ""
 
     def validate(self, data: Any) -> bool:
         """Ensures data contains valid log keywords (ERROR, STATUS, INFO)."""
