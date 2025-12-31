@@ -127,7 +127,6 @@ def stream_processor() -> None:
     """Main execution function to demonstrate both verbose
     and polymorphic usage."""
     try:
-        # Part 1: Verbose execution using .run()
         print("=== CODE NEXUS - DATA PROCESSOR FOUNDATION ===")
         print()
         numeric = NumericProcessor()
@@ -140,7 +139,6 @@ def stream_processor() -> None:
         log.run("ERROR: Connection timeout")
         print()
 
-        # Part 2: Silent loop execution using .process() directly
         print("=== Polymorphic Processing Demo ===")
         print("Processing multiple data types through same interface...")
         tasks = [
