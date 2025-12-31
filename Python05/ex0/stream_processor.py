@@ -13,14 +13,13 @@ class DataProcessor(ABC):
         name = self.__class__.__name__
         print(f"Initializing {name}...")
 
-        # Display input data with quotes if it is a string
-        if isinstance(data, str):
+        try:
+            _ = data + ""
             print(f'Processing data: "{data}"')
-        else:
+        except TypeError:
             print(f"Processing data: {data}")
 
         if self.validate(data):
-            # Conditional logging based on the class name
             if "Numeric" in name:
                 print("Validation: Numeric data verified")
             elif "Text" in name:
@@ -67,6 +66,7 @@ class NumericProcessor(DataProcessor):
             return True
         except Exception:
             print("Validation failed: Not numeric data!")
+            return False
 
 
 class TextProcessor(DataProcessor):
