@@ -38,6 +38,7 @@ class SensorStream(DataStream):
 
     def process_batch(self, data_batch: List[Any]) -> str:
         print(f"Stream ID: {self.stream_id}, Type: Environmental Data")
+        print(f"Processing sensor batch: {data_batch}")
         return ""
 
 
@@ -69,8 +70,11 @@ def data_stream_py() -> None:
     try:
         print("=== CODE NEXUS - POLYMORPHIC STREAM SYSTEM ===")
         print()
-        sensor1_id = "TEST"
-        SensorStream(stream_id=sensor1_id).process_batch([])
+        id1 = "TEST"
+        stream1 = SensorStream(stream_id=id1)
+        data1 = ["temp:22.5", "humidity:65", "pressure:1013"]
+        filtered_data1 = stream1.filter_data(data_batch=data1)
+        stream1.process_batch(filtered_data1)
 
     except Exception as e:
         print(f"Something went wrong -> {e}")
