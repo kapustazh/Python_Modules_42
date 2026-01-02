@@ -37,9 +37,31 @@ class SensorStream(DataStream):
         super().__init__(stream_id)
 
     def process_batch(self, data_batch: List[Any]) -> str:
-        print(f"Stream ID: {self.stream_id}, Type: Environmental Data")
-        print(f"Processing sensor batch: {data_batch}")
-        return ""
+        output = (
+            f"Stream ID: {self.stream_id}, Type: Environmental Data\n"
+            f"Processing sensor batch: {data_batch}\n"
+        )
+        temp_value: float | bool = False
+        try:
+            for item in data_batch:
+                if isinstance(item, str) and "temp" in item:
+                    temp_value = float(item.split(":")[1])
+                if isinstance(item, str) is False:
+                    raise ValueError("Uknown data-type :(")
+                self.processed_count += 1
+            if temp_value:
+                return (
+                    output + f"Sensor analysis: {self.processed_count} "
+                    f"readings processed, avg temp: {temp_value}°C"
+                )
+            else:
+                return (
+                    output
+                    + f"Sensor analysis: {self.processed_count}"
+                    + " readings processed"
+                )
+        except Exception as e:
+            return output + f"Invalid data -> {e}"
 
 
 class TransactionStream(DataStream):
@@ -47,7 +69,39 @@ class TransactionStream(DataStream):
         super().__init__(stream_id)
 
     def process_batch(self, data_batch: List[Any]) -> str:
-        return ""
+        output = (
+            f"Stream ID: {self.stream_id}, Type: Financial Data\n"
+            f"Processing transaction batch: {data_batch}\n"
+        )
+        balance: int | bool = False
+        try:
+            for item in data_batch:
+                if isinstance(item, str):
+                    if "buy" in item:
+                        balance += int(item.split(":")[1])
+                    elif "sell" in item:
+                        balance -= int(item.split(":")[1])
+                    else:
+                        raise ValueError("Uknown data-type :(")
+                self.processed_count += 1
+            if balance:
+                if balance > 0:
+                    return (
+                        output
+                        + f"Transaction analysis: {self.processed_count}"
+                        " operations, "
+                        f"net flow: +{balance} units"
+                    )
+                else:
+                    return (
+                        output
+                        + f"Transaction analysis: {self.processed_count} "
+                        " operations, "
+                        f"net flow: {balance} units"
+                    )
+            return output + "No transactions provided"
+        except Exception as e:
+            return output + f"Invalid data -> {e}"
 
 
 class EventStream(DataStream):
@@ -67,17 +121,19 @@ class StreamProcessor:
 
 
 def data_stream_py() -> None:
-    try:
-        print("=== CODE NEXUS - POLYMORPHIC STREAM SYSTEM ===")
-        print()
-        id1 = "TEST"
-        stream1 = SensorStream(stream_id=id1)
-        data1 = ["temp:22.5", "humidity:65", "pressure:1013"]
-        filtered_data1 = stream1.filter_data(data_batch=data1)
-        stream1.process_batch(filtered_data1)
-
-    except Exception as e:
-        print(f"Something went wrong -> {e}")
+    print("=== CODE NEXUS - POLYMORPHIC STREAM SYSTEM ===")
+    print()
+    sensor = SensorStream("FOO")
+    filtered_data1 = sensor.filter_data(
+        ["temp:22.5", "humidity:65", "pressure:1013"]
+    )
+    print(sensor.process_batch(filtered_data1))
+    print()
+    transaction = TransactionStream("BAR")
+    filtered_data2 = transaction.filter_data(
+        ["buy:22", "sell:15", "buy:123"]
+    )
+    print(transaction.process_batch(filtered_data2))
 
 
 if __name__ == "__main__":
