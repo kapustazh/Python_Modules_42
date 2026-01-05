@@ -17,7 +17,8 @@ def ft_stream_management() -> None:
         file=sys.stdout,
     )
 
-    print("[ALERT] System diagnostic: Communication channels verified", file=sys.stderr)
+    output_string = "[ALERT] System diagnostic:"
+    print(output_string, "Communication channels verified", file=sys.stderr)
 
     print("[STANDARD] Data transmission complete", file=sys.stdout)
 
