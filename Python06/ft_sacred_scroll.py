@@ -14,7 +14,7 @@ def ft_sacred_scroll() -> None:
     print(f"alchemy.elements.create_fire(): {fire}")
     print(f"alchemy.elements.create_water(): {water}")
     print(f"alchemy.elements.create_earth(): {earth}")
-    print(f"alchemy.elements.create_fire(): {air}")
+    print(f"alchemy.elements.create_air(): {air}")
     print()
     print("Testing package-level access (controlled by __init__.py):")
     fire = alchemy.create_fire()

@@ -33,6 +33,7 @@ def ft_import_transmutation() -> None:
         print("create_earth():", create_earth())
         print("create_fire():", create_fire())
         print("strength_potion():", strength_potion())
+        print()
         print("All import transmutation methods mastered!")
     except Exception as e:
         print(f"Something went wrong -> {e}")
