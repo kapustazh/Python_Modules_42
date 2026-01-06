@@ -30,6 +30,8 @@ def ft_crisis_response() -> None:
             print(f'SUCCESS: Archive recovered - "{file.read()}"')
     except FileNotFoundError:
         print("RESPONSE: Archive not found in storage matrix")
+    except PermissionError:
+        print("RESPONSE: Security protocols deny access")
 
     print("STATUS: Normal operations resumed\n")
     print("All crisis scenarios handled successfully. Archives secure.")
