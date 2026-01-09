@@ -11,7 +11,7 @@ class Card(ABC):
     def play(self, game_state: dict) -> dict:
         pass
 
-    def get_card_info(self) -> dict[str, str]:
+    def get_card_info(self) -> dict:
         return self.__dict__ | {
             'type': self.__class__.__name__.split("Card")[0]
         }
