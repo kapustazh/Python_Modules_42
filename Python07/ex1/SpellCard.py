@@ -7,8 +7,11 @@ class SpellCard(Card):
         self.effect_type: str = effect_type
 
     def play(self, game_state: dict) -> dict:
-        return {}
+        return {
+            'card_played': self.name,
+            'mana_used': self.cost,
+            'effect': self.effect_type
+        }
 
     def resolve_effect(self, targets: list) -> dict:
         return {}
-    
