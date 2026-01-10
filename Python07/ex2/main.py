@@ -29,6 +29,7 @@ def main() -> None:
     print("- Card:", card_methods)
     print("- Combatable:", combatable_methods)
     print("- Magical:", magical_methods)
+    arcane_warrior: EliteCard = EliteCard()
 
 
 if __name__ == "__main__":

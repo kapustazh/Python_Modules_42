@@ -4,15 +4,25 @@ from ex2.Combatable import Combatable
 
 
 class EliteCard(Card, Combatable, Magical):
+    def __init__(self, combat_type: str):
+        super().__init__()
+        self.combat_type: str = combat_type
+
     def play(self, game_state: dict) -> dict:
         pass
 
     def attack(self, target) -> dict:
-        pass
+        return {
+            "attacker": {target.name},
+            "target": "Enemy",
+            "damage": self.damage,
+            "combat_type": self.combat_type,
+        }
 
     def defend(self, incoming_damage: int) -> dict: ...
 
-    def get_combat_stats(self) -> dict: ...
+    def get_combat_stats(self) -> dict:
+        return {"combat_type": self.combat_type}
 
     def cast_spell(self, spell_name: str, targets: list) -> dict:
         pass
