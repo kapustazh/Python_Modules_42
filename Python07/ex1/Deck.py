@@ -6,12 +6,26 @@ import random
 
 
 class Deck():
+    """Deck class, manages a collection of cards"""
     deck: list = []
 
     def add_card(self, card: Card) -> None:
+        """Add a card to the deck
+
+        Args:
+            card (Card): the card to add
+        """
         self.deck.append(card)
 
     def remove_card(self, card_name: str) -> bool:
+        """Remove a card from the deck by name
+
+        Args:
+            card_name (str): name of the card to remove
+
+        Returns:
+            bool: True if card was removed, False otherwise
+        """
         for card in self.deck:
             if card.name == card_name:
                 self.deck.remove(card)
@@ -19,13 +33,24 @@ class Deck():
         return False
 
     def shuffle(self) -> None:
+        """Shuffle the deck"""
         random.shuffle(self.deck)
 
     def draw_card(self) -> Card:
+        """Draw a card from the deck
+
+        Returns:
+            Card: the drawn card
+        """
         card_to_draw: Card = self.deck.pop()
         return card_to_draw
 
     def get_deck_stats(self) -> dict:
+        """Get statistics about the deck
+
+        Returns:
+            dict: dictionary with deck statistics
+        """
         total_cost: int = sum(card.cost for card in self.deck)
         count: int = len(self.deck)
         avg_cost: float = total_cost / count if count > 0 else 0

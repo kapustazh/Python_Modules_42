@@ -2,6 +2,8 @@ from ex0.Card import Card
 
 
 class ArtifactCard(Card):
+    """ArtifactCard class, represents an artifact card with durability and
+    effect"""
     def __init__(self, name: str,
                  cost: int, rarity: str, durability: int, effect: str):
         super().__init__(name, cost, rarity)
@@ -9,11 +11,13 @@ class ArtifactCard(Card):
         self.effect: str = effect
 
     def play(self, game_state: dict) -> dict:
+        """Method to play the artifact card"""
         return {
             'card_played': self.name,
             'mana_used': self.cost,
             'effect': self.effect
         }
-        
+
     def activate_ability(self) -> dict:
+        """Method to activate the artifact's ability"""
         return {'effect': self.effect}

@@ -2,6 +2,7 @@ from ex0.CreatureCard import CreatureCard
 
 
 def main() -> None:
+    """Main demo function"""
     try:
         print("=== DataDeck Card Foundation ===")
         print()

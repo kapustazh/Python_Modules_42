@@ -8,6 +8,7 @@ from ex0.CreatureCard import CreatureCard
 
 
 def main() -> None:
+    """Main demo function for deck building"""
     try:
         print("=== DataDeck Deck Builder ===")
         print()
