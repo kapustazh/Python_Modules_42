@@ -10,11 +10,9 @@ class EliteCard(Card, Combatable, Magical):
     def attack(self, target) -> dict:
         pass
 
-    def defend(self, incoming_damage: int) -> dict:
-        ...
+    def defend(self, incoming_damage: int) -> dict: ...
 
-    def get_combat_stats(self) -> dict:
-        ...
+    def get_combat_stats(self) -> dict: ...
 
     def cast_spell(self, spell_name: str, targets: list) -> dict:
         pass
