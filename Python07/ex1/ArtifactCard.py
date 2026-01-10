@@ -14,6 +14,6 @@ class ArtifactCard(Card):
             'mana_used': self.cost,
             'effect': self.effect
         }
-
+        
     def activate_ability(self) -> dict:
-        return {}
+        return {'effect': self.effect}
