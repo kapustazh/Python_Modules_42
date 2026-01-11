@@ -29,7 +29,15 @@ def main() -> None:
     print("- Card:", card_methods)
     print("- Combatable:", combatable_methods)
     print("- Magical:", magical_methods)
-    arcane_warrior: EliteCard = EliteCard()
+    arcane_warrior1: EliteCard = EliteCard(
+        'Arcane warrior', 2, 'rare', 5, 10, 'melee'
+    )
+    arcane_warrior2: EliteCard = EliteCard(
+        'Arcane warrior', 2, 'rare', 5, 10, 'melee'
+    )
+    print("Combat phase:")
+    print()
+    print("Attack result:", arcane_warrior1.attack(arcane_warrior2))
 
 
 if __name__ == "__main__":
